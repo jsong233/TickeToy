@@ -13,15 +13,17 @@ To simplify the url, we could create the External Name Service.
 
 ### Publish shared library as an NPM package
 
-1. Create an NPM account
+#### Preparation
 
-2. Add an organization under NPM account
+Create an NPM account. Add an organization under NPM account
 
-3. In `/common/package.json`, change `"name"` to `"@organization-name/package-name"`
+#### Initialization
 
-4. Publish the package: inside of `/common`, run:
-   `npm login`
-   `npm publish --access public`
+In `/common/package.json`, change `"name"` to `"@organization-name/package-name"`
+
+Publish the package: inside of `/common`, run:
+`npm login`
+`npm publish --access public`
 
 5. Publish common library written as TypeScript as JavaScript:
    Inside of `/common`, run:
