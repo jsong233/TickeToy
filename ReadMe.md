@@ -1,13 +1,22 @@
 ### Cross-namespace communication
 
 To get all the existing namespaces:
-`kubectl get namespace`
+
+```
+kubectl get namespace
+```
 
 To get services existed inside of a particular namespace:
-`kubectl get services -n name-of-namespace`
+
+```
+kubectl get services -n name-of-namespace
+```
 
 The request url to communicate with a service from a different namespace:
-`http://name-of-service.name-of-namespace.svc.cluster.local`
+
+```
+http://name-of-service.name-of-namespace.svc.cluster.local
+```
 
 To simplify the url, we could create the External Name Service.
 
@@ -47,9 +56,12 @@ Then execute
 which convert the TypeScript files we had into JavaScript, and write it into the `/build` directory.
 
 In `/common/package.json`, update or add the following lines:
-`"main": "./build/index.js",`
-`"types": "./build/index.d.ts",`
-`"files": [ "build/**/*" ],`
+
+```
+"main": "./build/index.js",
+"types": "./build/index.d.ts",
+"files": [ "build/**/*" ],
+```
 
 #### Pipeline
 
@@ -60,7 +72,11 @@ Run `npm version patch` to update the version of the package.
 Run `npm run build` then `npm publish` to build and publish the package.
 
 In summary, we could add the following line to `/common/package.json`:
-`"pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish"`
+
+```
+"pub": "git add . && git commit -m \"Updates\" && npm version patch && npm run build && npm publish"
+```
+
 so that everytime after we make some changes to the common library, we will run `npm run pub` in the `\common` directory, then run `npm update @organization-name/package-name` in the directories that use this package.
 
 Finally, we could use the customized package by running
