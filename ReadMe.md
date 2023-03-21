@@ -111,3 +111,15 @@ npm update @organization-name/package-name
 ```
 
 in the directories that use this package (make sure to run `npm install @organization-name/package-name` beforehand).
+
+## NATS Streaming Server
+
+Creating a NATS streaming deployment: `/infra/k8s/nats-depl.yaml`
+
+To communicate with NATS, we use a client library called `node-nats-streaming`.
+
+The nats-streaming client will send data to the specified channel in the NATS Streaming server. The server will then broadcast the data out of that channel to anyone who's listening (who has subscribed to that channel).
+
+Inside of each channel, the Queue Group will make sure that multiple instances of the same service are not all going to receive the exact same event.
+
+To solve concurrency issues, we configure the NATS server with: `setDeliverAllAvailable`, `setDurableName`, and `Queue Group`.
